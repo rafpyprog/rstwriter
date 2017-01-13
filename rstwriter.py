@@ -2,10 +2,10 @@
 
 from docutils.core import publish_cmdline
 import pandas as pd
+import locale
 
 
 class RstWriter():
-
     def __init__(self, rstFile):
         self.indent = ('')
         self.css = None
@@ -15,7 +15,6 @@ class RstWriter():
         self.create_rst()
 
     def create_rst(self):
-        ''' Creates a blank .rst file '''
         createrst = open(self.rstFile, 'w').close
         return createrst
 
@@ -86,16 +85,35 @@ class RstWriter():
         titleMark = self.add_line_break(headers[header] * textSize)
         self.write([text, titleMark])
 
-    def table(self, dataFrame):
+    def table(self, dataframe, thousands=False, decimal='.'):
+        ''' Parse Pandas dataFrame, convert to rst and writes to file '''
+
+        def column_to_float(column, thousands=False, decimal='.'):
+            language, encoding = locale.getdefaultlocale()
+            if decimal == ',':
+                locale.setlocale(locale.LC_ALL, 'Portuguese')
+            else:
+                locale.setlocale(locale.LC_ALL, 'English')
+
+            ''' Converts float to formated string '''
+            column = column.map(lambda x: locale.format('%.2f', x, thousands))
+            return column
+
+        dfcopy = dataframe.copy()
         # converts all table to string type
-        for column in dataFrame:
-            dataFrame[column] = dataFrame[column].map(str)
+        for column in dfcopy:
+            print(dfcopy[column].dtype)
+            if dfcopy[column].dtype == 'float64':
+                dfcopy[column] = column_to_float(dfcopy[column], thousands,
+                                                 decimal)
+            else:
+                dfcopy[column] = dfcopy[column].map(str)
 
         # get table header
-        tableHeader = list(dataFrame.columns.values)
+        tableHeader = list(dfcopy.columns.values)
 
         # get table data lines
-        tableLines = dataFrame.iterrows()
+        tableLines = dfcopy.iterrows()
         tableData = []
         for line in tableLines:
             tableData.append(list(line[1]))
