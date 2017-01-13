@@ -98,7 +98,7 @@ class rstWriter():
         cols = list(zip(*tableData))
         colsWidth = [len(item) for item in [max(col, key=len) for col in cols]]
         tableData.pop(0)
-        #writes table to rst, add 4 to with because of * to bold the header
+        # writes table to rst, add 4 to with because of * to bold the header
         tableBorder = ' '.join('=' * (width + 4) for width in colsWidth) + '\n'
         self.write(tableBorder)
         # table header in bold
@@ -118,7 +118,7 @@ class rstWriter():
     def publish(self, format):
         outputFile = '{}.{}'.format(self.rstFile.split('.')[0], format)
         description = 'rstWriter'
-        if self.css == None:
+        if self.css is None:
             cssarg = '--stylesheet=html4css1.css'
         else:
             cssarg = '--stylesheet=html4css1.css, {}'.format(self.css)
