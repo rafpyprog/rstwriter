@@ -1,9 +1,10 @@
-from docutils.core import publish_cmdline, default_description
+''' RST report writer for the pandas Library.'''
 
+from docutils.core import publish_cmdline
 import pandas as pd
 
 
-class rstWriter():
+class RstWriter():
 
     def __init__(self, rstFile):
         self.indent = ('')
@@ -11,11 +12,17 @@ class rstWriter():
         self.CONTAINERS = ('header', 'footnote')
         self.header_status = ('closed')
         self.rstFile = rstFile
-        open(self.rstFile, 'w').close
+        self.create_rst()
+
+    def create_rst(self):
+        ''' Creates a blank .rst file '''
+        createrst = open(self.rstFile, 'w').close
+        return createrst
 
     def write(self, text):
+        ''' Writes content in the .rst file '''
         with open(self.rstFile, 'a') as rstFile:
-            if type(text) is list or type(text) is tuple:
+            if isinstance(text, list) or isinstance(text, tuple):
                 for txt in text:
                     rstFile.write(txt)
             else:
@@ -71,7 +78,7 @@ class rstWriter():
                    'h5': '.', 'h6': "'"}
         try:
             assert header in headers
-        except:
+        except AssertionError:
             print('''{} is not valid header. Shoul be h1, h2, h3, h4, h5,
                   h6'''.format(header))
         textSize = len(text)
@@ -80,7 +87,7 @@ class rstWriter():
         self.write([text, titleMark])
 
     def table(self, dataFrame):
-        # converts all table to strig type
+        # converts all table to string type
         for column in dataFrame:
             dataFrame[column] = dataFrame[column].map(str)
 
@@ -115,12 +122,13 @@ class rstWriter():
             self.write('\n')
         self.write(tableBorder + '\n')
 
-    def publish(self, format):
-        outputFile = '{}.{}'.format(self.rstFile.split('.')[0], format)
+    def publish(self, filetype):
+        ''' Creates final report from the .rst file '''
+        outputfile = '{}.{}'.format(self.rstFile.split('.')[0], filetype)
         description = 'rstWriter'
         if self.css is None:
             cssarg = '--stylesheet=html4css1.css'
         else:
             cssarg = '--stylesheet=html4css1.css, {}'.format(self.css)
-        publish_cmdline(writer_name=format, description=description,
-                        argv=[self.rstFile, outputFile, cssarg])
+        publish_cmdline(writer_name=filetype, description=description,
+                        argv=[self.rstFile, outputfile, cssarg])
