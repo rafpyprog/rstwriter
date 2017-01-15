@@ -2,7 +2,7 @@
 Report writing for Pandas using reStructuredTex
 
 # Usage
-`from rstwriter import RstWriter
+``` from rstwriter import RstWriter
 
 report = RstWriter('sales.rst')
 
@@ -18,14 +18,14 @@ report.title('h2', 'Cool content')
 #let's use some colors and styles... firts add a css file
 report.css = 'ourstyles.css'`
 
-`# use classes from the added css to style paragraphs.
+# use classes from the added css to style paragraphs.
 report.paragraph('I hope this is blue', style='blue-text')
 
 data = pd.read_csv('sales.csv')
 # .... do some statistics
 
 # show your results in a table
-report.table(data)'
+report.table(data)
 
 # Publish you report in html
-report.publish('html')
+report.publish('html') ```
