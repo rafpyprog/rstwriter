@@ -1,4 +1,4 @@
-rstwriter.py
+dist/
 setup.py
 setup.cdf
 README.md
