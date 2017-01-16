@@ -6,6 +6,7 @@ python:
 install: 
   - pip install -r requirements.txt
   - pip install pytest-cov
+  - pip install codecov
 
 script:
   - py.test --cov=rstwriter tests/tests.py
