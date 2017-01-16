@@ -1,5 +1,8 @@
 ''' Test for RstWriter package '''
 import os
+import sys
+
+sys.path.append(os.path.join('..', 'rstwriter'))
 
 from rstwriter import RstWriter
 
