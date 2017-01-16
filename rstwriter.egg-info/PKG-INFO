@@ -1,16 +1,12 @@
 Metadata-Version: 1.1
 Name: rstwriter
-Version: 0.8.3
+Version: 0.8.4
 Summary: A report writer powered with reStructuredText for Pandas library.
 Home-page: https://github.com/rafpyprog/rstwriter
 Author: Rafael Alves Ribeiro
 Author-email: rafael.alves.ribeiro@gmail.com
 License: MIT
-Download-URL: https://github.com/rafpyprog/rstwriter/tarball/0.8.3
+Download-URL: https://github.com/rafpyprog/rstwriter/tarball/0.8.4
 Description: UNKNOWN
 Keywords: reStructuredText,rst,pandas,reporting
 Platform: UNKNOWN
-Classifier: Development Status :: 3 - Alpha
-Classifier: Intended Audience :: Science/Research
-Classifier: Programming Language :: Python :: 3.5
-Classifier: Topic :: Text Processing :: Markup
