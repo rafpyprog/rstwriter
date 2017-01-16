@@ -11,5 +11,5 @@ script:
   - py.test --cov=rstwriter tests/tests.py
 
 after_sucess:
-  - codecov
+  - codecov -t 785633b7-21fc-4073-a207-a80dedad1ba6
 
