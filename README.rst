@@ -4,8 +4,7 @@ Report writing for Pandas using reStructuredTex
 
 Installing
 ----------
-.. code:: 
-    pip install rstwriter
+.. code:: pip install rstwriter
 
 Usage
  
