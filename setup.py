@@ -1,14 +1,18 @@
-from distutils.core import setup
+from os import path
+from setuptools import setup, find_packages
+
+HERE = path.abspath(path.dirname(__file__))
 
 setup(
-    name = 'rstwriter',
-    packages = ['rstwriter'],
-    version = '0.3',
-    description = 'A report writer powered with reStructuredText for Pandas library.',
-    author = 'Rafael Alves Ribeiro',
-    author_email = 'rafael.alves.ribeiro@gmail.com',
-    url = 'https://github.com/rafpyprog/rstwriter',
-    download_url = 'https://github.com/rafpyprog/rstwriter/tarball/0.3',
-    keywords = ['reStructuredText', 'rst', 'pandas', 'reporting'],
-    classifiers = [],
-                            )
+    name='rstwriter',
+    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'dist']),
+    install_requires=['docutils'],
+    version='0.5',
+    description='A report writer powered with reStructuredText for Pandas library.',
+    author='Rafael Alves Ribeiro',
+    author_email='rafael.alves.ribeiro@gmail.com',
+    license='MIT',
+    url='https://github.com/rafpyprog/rstwriter',
+    download_url='https://github.com/rafpyprog/rstwriter/tarball/0.5',
+    keywords=['reStructuredText', 'rst', 'pandas', 'reporting'],
+    classifiers=[],)
