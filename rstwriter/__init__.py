@@ -1,2 +1,1 @@
-from rstwriter import RstWriter
 
