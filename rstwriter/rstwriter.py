@@ -13,7 +13,7 @@ class RstWriter():
         self.containers = ('header', 'footnote')
         self.header_status = ('closed')
         self.rstfile = rstfile
-        self.create_rst()
+        return self.create_rst()
 
     def create_rst(self):
         ''' Creates an empty rst file '''

@@ -5,6 +5,7 @@ dist/
 *.csv
 *.txt
 *.html
+*.pyc
 *.rst
 
 githubtag.py
