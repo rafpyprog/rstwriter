@@ -1,6 +1,11 @@
 language: python
 python:
   - "3.5"
-install: "pip install -r requirements.txt"
-script: python -m pytest -v tests/tests.py
+install: 
+  - "pip install -r requirements.txt"
+  - "pip install pytest-cov"
+script:
+  - py.test tests/tests.py
+after_sucess:
+  - codecov
 
