@@ -28,7 +28,7 @@ Usage
     # use classes from the added css to style paragraphs.
     report.paragraph('I hope this is blue', style='blue-text')
 
-    # parse a DataFrame an show in a table.
+    # reads a DataFrame and includes in the document as a table.
     data = pd.read_csv('sales.csv')
     report.table(data)
 
