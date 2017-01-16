@@ -1,5 +1,9 @@
-# rstwriter
+rstwriter
+=========
 Report writing for Pandas using reStructuredTex
+
+.. image:: https://img.shields.io/pypi/v/nine.svg   
+   :target: https://pypi.python.org/pypi/rstwriter/0.82
 
 # Usage
 ``` 
