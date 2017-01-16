@@ -22,7 +22,7 @@ Usage
     report.paragraph('Amazing text. Really cool.')
     report.title('h2', 'Cool content')
 
-    # let's use some colors and styles... firts add a css file.
+    # Include a CSS file.
     report.css = 'ourstyles.css'`
 
     # use classes from the added css to style paragraphs.
