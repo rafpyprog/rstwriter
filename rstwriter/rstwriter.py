@@ -28,6 +28,7 @@ class RstWriter():
                     rstfile.write(txt)
             else:
                 rstfile.write(text)
+        return True
 
     def style(self, styles, text):
         ''' Use this class to style an element with a CSS class '''
