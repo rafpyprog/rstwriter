@@ -2,11 +2,13 @@ rstwriter
 =========
 Report writing for Pandas using reStructuredTex
 
-.. image:: https://img.shields.io/pypi/v/nine.svg   
-   :target: https://pypi.python.org/pypi/rstwriter/
+Installing
+----------
+.. code:: 
+    pip install rstwriter
 
-# Usage
-``` 
+Usage
+ 
 from rstwriter import RstWriter
 report = RstWriter('sales.rst')
 report.header('open')

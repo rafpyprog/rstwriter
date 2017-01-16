@@ -15,4 +15,10 @@ setup(
     url='https://github.com/rafpyprog/rstwriter',
     download_url='https://github.com/rafpyprog/rstwriter/tarball/0.82',
     keywords=['reStructuredText', 'rst', 'pandas', 'reporting'],
-    classifiers=[],)
+    classifiers=(
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Science/Research',
+        'Programming Language :: Python :: 3.5',
+        'Topic :: Text Processing :: Markup',
+    ),
+)
