@@ -3,8 +3,10 @@ RstWriter
 Report writing for Pandas using reStructuredTex
 
 .. image:: https://travis-ci.org/rafpyprog/rstwriter.svg?branch=master
-    :target: https://travis-ci.org/rafpyprog/rstwriter
+  :target: https://travis-ci.org/rafpyprog/rstwriter
 
+.. image:: https://codecov.io/gh/rafpyprog/rstwriter/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/rafpyprog/rstwriter
 
  
 
