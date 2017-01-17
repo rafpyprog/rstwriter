@@ -6,9 +6,7 @@ python:
 install: 
   - pip install -r requirements.txt
 
-script:
-  - py.test --cov=rstwriter tests/tests.py
+script: py.test --cov=rstwriter tests/tests.py
 
-after_sucess:
-  - bash <(curl -s https://codecov.io/bash) 
+after_sucess: bash <(curl -s https://codecov.io/bash) 
 

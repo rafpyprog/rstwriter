@@ -3,12 +3,15 @@ import sys
 
 SETUP_FILE = 'setup.py'
 
-if sys.argv is None:
+if sys.argv[1] is None:
     print('Version number argument missin.')
     sys.exit()
 
 # cria nova tag no github e faz o push.
 version = sys.argv[1]
+commit_message = sys.argv[2]
+if commit_message is None:
+    commit_message = version
 os.system('git tag {} -m "Version {} tag"'.format(version, version))
 os.system('git push --tags origin master')
 
@@ -36,3 +39,10 @@ for line in lines:
 with open(SETUP_FILE, 'w') as newsetupfile:
     for line in newsetup:
         newsetupfile.write(line)
+
+os.system('python -m pytest --cov=rstwriter tests\\tests.py')
+os.system('coverage xml')
+os.system('git add .')
+os.system('git commit -m "{}"'.format(commit_message))
+os.system('git push')
+os.system('codecov -t 785633b7-21fc-4073-a207-a80dedad1ba6')
