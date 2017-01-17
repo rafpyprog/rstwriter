@@ -45,4 +45,7 @@ os.system('coverage xml')
 os.system('git add .')
 os.system('git commit -m "{}"'.format(commit_message))
 os.system('git push')
-os.system('codecov -t 785633b7-21fc-4073-a207-a80dedad1ba6')
+os.system('codecov -t 785633b7-21fc-4073-a207-a80dedad1ba6 -X gcov')
+
+# upload to PiPy
+os.system('python setup.py sdist upload -r pypi')
