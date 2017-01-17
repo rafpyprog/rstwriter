@@ -5,12 +5,10 @@ python:
 
 install: 
   - pip install -r requirements.txt
-  - pip install pytest-cov
-  - pip install codecov
 
 script:
   - py.test --cov=rstwriter tests/tests.py
 
 after_sucess:
-  - codecov -t 785633b7-21fc-4073-a207-a80dedad1ba6
+  - bash <(curl -s https://codecov.io/bash) 
 

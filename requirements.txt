@@ -1,1 +1,4 @@
-docutils
+docutils==0.13
+pytest
+pytest-cov
+
