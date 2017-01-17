@@ -109,7 +109,6 @@ class RstWriter():
         dfcopy = dataframe.copy()
         # converts all table to string type
         for column in dfcopy:
-            print(dfcopy[column].dtype)
             if dfcopy[column].dtype == 'float64':
                 dfcopy[column] = column_to_float(dfcopy[column], thousands,
                                                  decimal)
