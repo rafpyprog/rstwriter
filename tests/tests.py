@@ -10,6 +10,8 @@ from rstwriter import RstWriter
 
 
 REPORT_FILE = 'report.rst'
+TESTS_PATH = os.path.dirname(os.path.realpath(__file__))
+
 
 
 @pytest.fixture
@@ -70,33 +72,34 @@ def test_close_header_unindent():
 
 
 def load_table(mycsv):
+    mycsv = os.path.join(TESTS_PATH, mycsv)
     table = pd.read_csv(mycsv, delimiter=';', encoding="ISO-8859-1")
     return table
 
 
 def test_table_only_strings_same_width():
-    csv = load_table('./data/table1.csv')
+    csv = load_table('table1.csv')
     report = RstWriter(REPORT_FILE)
     report.table(csv)
     report.publish('html')
 
 
 def test_table_only_strings_diff_width():
-    csv = load_table('./data/table2.csv')
+    csv = load_table('table2.csv')
     report = RstWriter(REPORT_FILE)
     report.table(csv)
     report.publish('html')
 
 
 def test_table_only_strings_diff_width_header_columns():
-    csv = load_table('./data/table3.csv')
+    csv = load_table('table3.csv')
     report = RstWriter(REPORT_FILE)
     report.table(csv)
     report.publish('html')
 
 
 def test_table_with_floats_and_ints():
-    csv = load_table('./data/table4.csv')
+    csv = load_table('table4.csv')
     csv['COL1'] = csv['COL1'].astype(float)
     csv['COL5_'] = csv['COL5_'].astype(int)
     report = RstWriter(REPORT_FILE)
@@ -106,7 +109,7 @@ def test_table_with_floats_and_ints():
 
 def test_table_comma_as_decimal():
     decimal = ','
-    csv = load_table('./data/table4.csv')
+    csv = load_table('table4.csv')
     csv['COL1'] = csv['COL1'].astype(float)
     csv['COL5_'] = csv['COL5_'].astype(int)
     report = RstWriter(REPORT_FILE)
@@ -116,7 +119,7 @@ def test_table_comma_as_decimal():
 
 def test_table_thousands_separator():
     thousands = True
-    csv = load_table('./data/table4.csv')
+    csv = load_table('table4.csv')
     csv['COL1'] = csv['COL1'].astype(float)
     csv['COL5_'] = csv['COL5_'].astype(int)
     report = RstWriter(REPORT_FILE)
@@ -127,7 +130,7 @@ def test_table_thousands_separator():
 def test_table_decimal_with_thousands_separator():
     decimal = ','
     thousands = True
-    csv = load_table('./data/table4.csv')
+    csv = load_table('table4.csv')
     csv['COL1'] = csv['COL1'].astype(float)
     csv['COL5_'] = csv['COL5_'].astype(int)
     report = RstWriter(REPORT_FILE)
