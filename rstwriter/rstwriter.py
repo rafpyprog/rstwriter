@@ -99,12 +99,12 @@ class RstWriter():
         def column_to_float(column, thousands=False, decimal='.'):
             ''' Convert column with float type values to formated string '''
             if os.name == 'posix':
-                locales = {'pt_BR': 'pt_BR', 'en_US': 'en_US.UTF-8'}
+                locales = {'pt_PT': 'pt_PT', 'en_US': 'en_US.UTF-8'}
             else:
-                locales = {'pt_BR': 'Portuguese', 'en_US': 'English'}
+                locales = {'pt_PT': 'Portuguese', 'en_US': 'English'}
 
             if decimal == ',':
-                locale.setlocale(locale.LC_ALL, locales['pt_BR'])
+                locale.setlocale(locale.LC_ALL, locales['pt_PT'])
             else:
                 locale.setlocale(locale.LC_ALL, locales['en_US'])
 
