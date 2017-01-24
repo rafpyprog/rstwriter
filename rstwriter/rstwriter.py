@@ -101,10 +101,10 @@ class RstWriter():
             if os.name == 'posix':
                 locales = {'pt_BR': 'pt_BR.UTF-8', 'en_US': 'en_US.UTF-8'}
             else:
-                locales = {'pt_PT': 'Portuguese', 'en_US': 'English'}
+                locales = {'pt_BR': 'Portuguese', 'en_US': 'English'}
 
             if decimal == ',':
-                locale.setlocale(locale.LC_ALL, locales['pt_PT'])
+                locale.setlocale(locale.LC_ALL, locales['pt_BR'])
             else:
                 locale.setlocale(locale.LC_ALL, locales['en_US'])
 
