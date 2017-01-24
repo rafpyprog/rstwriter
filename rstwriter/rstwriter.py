@@ -99,7 +99,7 @@ class RstWriter():
         def column_to_float(column, thousands=False, decimal='.'):
             ''' Convert column with float type values to formated string '''
             if os.name == 'posix':
-                locales = {'pt_BR': 'pt_BR', 'en_US': 'en_US'}
+                locales = {'pt_BR': 'pt_BR', 'en_US': 'en_US.UTF-8'}
             else:
                 locales = {'pt_BR': 'Portuguese', 'en_US': 'English'}
 
