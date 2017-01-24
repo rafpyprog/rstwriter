@@ -4,7 +4,7 @@ import sys
 
 
 sys.path.append(os.path.join('..', 'rstwriter'))
-
+import pandas as pd
 import pytest
 from rstwriter import RstWriter
 
@@ -69,5 +69,73 @@ def test_close_header_unindent():
     assert report.indent == ''
 
 
+def load_table(mycsv):
+    table = pd.read_csv(mycsv, delimiter=';', encoding="ISO-8859-1")
+    return table
+
+
+def test_table_only_strings_same_width():
+    csv = load_table('./data/table1.csv')
+    report = RstWriter(REPORT_FILE)
+    report.table(csv)
+    report.publish('html')
+
+
+def test_table_only_strings_diff_width():
+    csv = load_table('./data/table2.csv')
+    report = RstWriter(REPORT_FILE)
+    report.table(csv)
+    report.publish('html')
+
+
+def test_table_only_strings_diff_width_header_columns():
+    csv = load_table('./data/table3.csv')
+    report = RstWriter(REPORT_FILE)
+    report.table(csv)
+    report.publish('html')
+
+
+def test_table_with_floats_and_ints():
+    csv = load_table('./data/table4.csv')
+    csv['COL1'] = csv['COL1'].astype(float)
+    csv['COL5_'] = csv['COL5_'].astype(int)
+    report = RstWriter(REPORT_FILE)
+    report.table(csv)
+    report.publish('html')
+
+
+def test_table_comma_as_decimal():
+    decimal = ','
+    csv = load_table('./data/table4.csv')
+    csv['COL1'] = csv['COL1'].astype(float)
+    csv['COL5_'] = csv['COL5_'].astype(int)
+    report = RstWriter(REPORT_FILE)
+    report.table(csv, decimal=decimal)
+    report.publish('html')
+
+
+def test_table_thousands_separator():
+    thousands = True
+    csv = load_table('./data/table4.csv')
+    csv['COL1'] = csv['COL1'].astype(float)
+    csv['COL5_'] = csv['COL5_'].astype(int)
+    report = RstWriter(REPORT_FILE)
+    report.table(csv, thousands=thousands)
+    report.publish('html')
+
+
+def test_table_decimal_with_thousands_separator():
+    decimal = ','
+    thousands = True
+    csv = load_table('./data/table4.csv')
+    csv['COL1'] = csv['COL1'].astype(float)
+    csv['COL5_'] = csv['COL5_'].astype(int)
+    report = RstWriter(REPORT_FILE)
+    report.table(csv, decimal=decimal, thousands=thousands)
+    report.publish('html')
+
+
 def teardown_module():
     os.remove(REPORT_FILE)
+
+

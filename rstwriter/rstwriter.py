@@ -115,8 +115,9 @@ class RstWriter():
             else:
                 dfcopy[column] = dfcopy[column].map(str)
 
-        # get table header
-        tableheader = list(dfcopy.columns.values)
+        # get table header and apply bold format
+        headers = list(dfcopy.columns.values)
+        tableheader = ['**' + th + '**' for th in headers]
 
         # get table data lines
         tablelines = dfcopy.iterrows()
@@ -128,19 +129,18 @@ class RstWriter():
         # width of each columns based on biggest cell
         cols = list(zip(*tabledata))
         colswidth = [len(item) for item in [max(col, key=len) for col in cols]]
-        tabledata.pop(0)
+
         # writes table to rst, add 4 to with because of * to bold the header
-        tableborder = ' '.join('=' * (width + 4) for width in colswidth) + '\n'
+        tableborder = ' '.join('=' * width for width in colswidth) + '\n'
         self.write(tableborder)
-        # table header in bold
-        self.write(' '.join('**' + th + '**' for th in tableheader) + '\n')
+
         for line in tabledata:
             for cellindex, cell in enumerate(line):
                 if cellindex > 0:
                     # number of white spaces to align the value on column
                     # add 4 because of * in headers
                     spaces = (colswidth[cellindex - 1] -
-                              len(line[cellindex - 1]) + 1 + 4)
+                              len(line[cellindex - 1]) + 1)
                     self.write(' ' * spaces + cell)
                 else:
                     self.write(cell)

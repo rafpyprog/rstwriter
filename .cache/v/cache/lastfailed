@@ -1,1 +1,9 @@
-{}
+{
+  "tests/tests.py::test_table_comma_as_decimal": true,
+  "tests/tests.py::test_table_decimal_with_thousands_separator": true,
+  "tests/tests.py::test_table_only_strings_diff_width": true,
+  "tests/tests.py::test_table_only_strings_diff_width_header_columns": true,
+  "tests/tests.py::test_table_only_strings_same_width": true,
+  "tests/tests.py::test_table_thousands_separator": true,
+  "tests/tests.py::test_table_with_floats_and_ints": true
+}
