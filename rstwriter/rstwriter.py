@@ -1,4 +1,5 @@
 ''' RST report writer for the pandas Library.'''
+import os
 
 import locale
 from docutils.core import publish_cmdline
@@ -97,10 +98,15 @@ class RstWriter():
 
         def column_to_float(column, thousands=False, decimal='.'):
             ''' Convert column with float type values to formated string '''
-            if decimal == ',':
-                locale.setlocale(locale.LC_ALL, 'Portuguese')
+            if os.name == 'posix':
+                locales = {'pt_BR': 'pt_BR', 'en_US': 'en_US'}
             else:
-                locale.setlocale(locale.LC_ALL, 'English')
+                locales = {'pt_BR': 'Portuguese', 'en_US': 'English'}
+
+            if decimal == ',':
+                locale.setlocale(locale.LC_ALL, locales['pt_BR'])
+            else:
+                locale.setlocale(locale.LC_ALL, locales['en_US'])
 
             # Converts float to formated string
             column = column.map(lambda x: locale.format('%.2f', x, thousands))
